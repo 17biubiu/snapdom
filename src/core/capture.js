@@ -25,7 +25,7 @@ import { baseCSSCache } from '../core/cache.js'
 
 export async function captureDOM(element, options = {}) {
   if (!element) throw new Error("Element cannot be null or undefined");
-
+  if (element.nodeType !== Node.ELEMENT_NODE) throw new Error("captureDOM: Only Element nodes are supported");
   const { compress = true, embedFonts = false, fast = true, scale = 1 } = options;
   let clone, classCSS, styleCache;
   let fontsCSS = "";
